@@ -1,0 +1,24 @@
+@import "/styles/globals.scss";
+
+.sidebar {
+  border: 1px solid green;
+
+  &__bars{
+    font-size: 25px;
+  }
+
+  &__top {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+
+    svg{
+        cursor: pointer;
+    }
+
+
+
+  }
+}

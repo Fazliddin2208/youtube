@@ -30,8 +30,23 @@ export default function Videos() {
     setId(e);
   };
 
+  const checkScope = (scopes) => {
+    let opener = 0, closer = 0, neutral = 0
+    console.log(scopes.split(""), opener, closer);
+    scopes.split("").forEach(scope=>{
+      scope === "(" ? opener++ : scope === ")" ? closer++ : neutral++
+    })
+
+    return opener === closer
+  }
+
+  console.log(checkScope("((()))"));
+
   return (
     <div>
+
+    <button onClick={()=>checkScope('(((())))))')}>Click</button> <br />
+
       <button onClick={getYouTubeData}>Get Data</button> <br /> <br />
       <hr />
       <ul>

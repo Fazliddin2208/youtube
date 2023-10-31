@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import Tags from "./Tags";
-import Videos from "./Videos";
+import Videos from "./Videos/Videos";
 import Loader from "../Loaders/Loader";
 import Loading from "@/app/loading";
 

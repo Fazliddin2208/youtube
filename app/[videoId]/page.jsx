@@ -9,7 +9,7 @@ export default function VideoPage({ params }) {
   return (
     <div>
         <iframe
-          width="400"
+          width="800"
           height="499"
           src={`https://www.youtube.com/embed/${params?.videoId}`}
           title="Foydali uchrashuv: Sherzod Kayumov 2 | Alisher Rustamov"

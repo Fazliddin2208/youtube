@@ -1,24 +1,63 @@
 @import "/styles/globals.scss";
 
 .sidebar {
-  border: 1px solid green;
+  padding: 10px 5px;
 
-  &__bars{
+  &__bars {
     font-size: 25px;
   }
 
   &__top {
-    border: 1px solid red;
     display: flex;
     align-items: center;
     display: flex;
     gap: 20px;
 
-    svg{
-        cursor: pointer;
+    svg {
+      cursor: pointer;
     }
 
+    a{
+      width: 50%;
+    }
+  }
 
+  &__body{
+    margin-top: 30px;
 
+    ul{
+      list-style: none;
+      padding: 0;
+      box-sizing: content-box;
+      border-bottom: 1px solid rgb(61, 60, 60);
+      padding-bottom: 15px;
+      li{
+        margin: 0;
+        border-radius: 10px;
+        transition: .3s all ease;
+        
+        &.active{
+          background-color: rgba(255, 255, 255, 0.17);
+        }
+        &:hover{
+          background-color: rgba(61, 60, 60);
+        }
+        a{
+          padding: 7px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 15px;
+          display: flex;
+          height: 100%;
+
+          svg{
+            width: 30px;
+          }
+        }
+      }
+    }
   }
 }

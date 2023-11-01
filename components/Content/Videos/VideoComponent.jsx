@@ -1,29 +1,52 @@
-"use client"
+"use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import content from "./../content.module.scss";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+import axios from "axios";
 
 export default function VideoComponent({ video }) {
-    const date = new Date()
-    const year = date.getFullYear()
-    const month = date.getMonth()
-    const day = date.getDay()
-    const hour = date.getHours()
-    const minute = date.getMinutes()
-    const second = date.getSeconds()
-    const msecond = date.getMilliseconds()
+  useEffect(() => {
+    checkPublishetTime();
+    getChannelInfo();
+  }, []);
 
-    const timeNow = `${year}-${month}-${day}T${hour}:${minute}:${second}-${msecond}:00`
+  const [channelInfo, setChannelInfo] = useState({});
 
-    const now = new Date(timeNow)
-    console.log(now, timeNow);
-    // console.log(video, date.getUTCDate());
+  const getChannelInfo = async () => {
+    await axios
+      .get(
+        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${video?.snippet?.channelId}&key=AIzaSyB9WvaJK1VfXypXIT9KBUE0yDBQZ3SRTA8`
+      )
+      .then((res) => {
+        res.data.items?.map((channel) => {
+          setChannelInfo({
+            ...channelInfo,
+            channelTitle: channel?.snippet?.title,
+            channelLogo: channel?.snippet?.thumbnails?.default?.url,
+            channelLogoWidth: channel?.snippet?.thumbnails?.default?.width,
+            channelLogoHeight: channel?.snippet?.thumbnails?.default?.height,
+          });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const [publishDate, setPublishDate] = useState();
+
+  const checkPublishetTime = () => {
+    let pdate = video?.snippet?.publishedAt?.split("T");
+    setPublishDate(pdate[0]);
+  };
+
   return (
     <div className={content.videos__cart}>
-      <div className={content.videos__cart__header}>
+      <Link href={`/${video?.id}`} className={content.videos__cart__header}>
         <Image
           src={video?.snippet?.thumbnails?.high?.url}
           alt="video"
@@ -32,15 +55,25 @@ export default function VideoComponent({ video }) {
           quality={100}
           priority
         />
-      </div>
+      </Link>
       <div className={content.videos__cart__body}>
         <div className={content.videos__cart__logo}>
-          {/* <Image src={""} alt="video" width={100} height={100} quality={100} /> */}
+          {channelInfo?.channelLogo && (
+            <Image
+              src={channelInfo?.channelLogo}
+              alt="video"
+              width={channelInfo?.channelLogoWidth}
+              height={channelInfo?.channelLogoHeight}
+              quality={100}
+            />
+          )}
         </div>
         <div className={content.videos__cart__data}>
-          <h3>{video?.snippet?.title}</h3>
-          <p>{video?.snippet?.channelTitle}</p>
-          <p>{video?.snippet?.publishedAt}</p>
+          <Link href={`/${video?.id}`}>
+            <h3>{video?.snippet?.localized?.title}</h3>
+          </Link>
+          <Link href={"/"}>{channelInfo?.channelTitle}</Link>
+          <p>{publishDate}</p>
         </div>
         <div className={content.videos__cart__action}>
           <FontAwesomeIcon icon={faEllipsisVertical} />

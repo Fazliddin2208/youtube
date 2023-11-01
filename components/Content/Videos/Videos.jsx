@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import VideoComponent from "./VideoComponent";
+import content from "./../content.module.scss";
 
 async function getYouTubeDatas() {
   const result = await axios.get(
@@ -16,7 +17,7 @@ export default async function Videos() {
   return (
     <div>
       <hr />
-      <ul>
+      <ul className={content.videos}>
         {videos?.map((video) => (
           <VideoComponent key={video?.id} video={video} />
         ))}

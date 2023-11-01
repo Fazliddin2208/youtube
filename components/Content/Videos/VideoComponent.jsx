@@ -72,7 +72,7 @@ export default function VideoComponent({ video }) {
           <Link href={`/${video?.id}`}>
             <h3>{video?.snippet?.localized?.title}</h3>
           </Link>
-          <Link href={"/"}>{channelInfo?.channelTitle}</Link>
+          <Link href={"/"}><p>{channelInfo?.channelTitle}</p></Link>
           <p>{publishDate}</p>
         </div>
         <div className={content.videos__cart__action}>

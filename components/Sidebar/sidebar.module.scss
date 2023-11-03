@@ -4,7 +4,7 @@
   padding: 10px 5px;
 
   &__bars {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   &__top {
@@ -12,13 +12,14 @@
     align-items: center;
     display: flex;
     gap: 20px;
+    padding-left: 10px;
 
     svg {
       cursor: pointer;
     }
 
     a{
-      width: 50%;
+      width: 45%;
     }
   }
 
@@ -46,15 +47,15 @@
           padding: 7px;
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 20px;
           text-decoration: none;
           font-weight: 500;
-          font-size: 15px;
+          font-size: 14px;
           display: flex;
           height: 100%;
 
           svg{
-            width: 30px;
+            width: 25px;
           }
         }
       }

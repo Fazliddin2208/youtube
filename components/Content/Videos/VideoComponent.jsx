@@ -48,10 +48,10 @@ export default function VideoComponent({ video }) {
     <div className={content.videos__cart}>
       <Link href={`/${video?.id}`} className={content.videos__cart__header}>
         <Image
-          src={video?.snippet?.thumbnails?.high?.url}
+          src={video?.snippet?.thumbnails?.medium?.url}
           alt="video"
-          width={video?.snippet?.thumbnails?.high?.width}
-          height={video?.snippet?.thumbnails?.high?.height}
+          width={video?.snippet?.thumbnails?.medium?.width}
+          height={video?.snippet?.thumbnails?.medium?.height}
           quality={100}
           priority
         />

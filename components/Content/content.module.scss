@@ -1,41 +1,57 @@
 .content{
-    border: 5px solid green;
+    // border: 5px solid green;
 }
 
 .videos{
-    border: 1px solid yellow;
+    // border: 1px solid yellow;
     width: 100%;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 20px;
     &__cart{
         width: 100%;
-        border: 1px solid ;
+        // border: 1px solid ;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
 
         a{
             text-decoration: none;
         }
 
         &__header{
-            border: 1px solid red;
             display: block;
-            // height: 100px;
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
             img{
                 width: 100%;
+                height: 100%;
             }
         }
 
         &__body{
             display: flex;
             justify-content: space-between;
+            border: 1px solid red;
         }
 
         &__logo{
-
+            border: 1px solid yellow;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            overflow: hidden;
+            img{
+                // width: 100%;
+                // height: 100%;
+            }
         }
 
         &__data{
+            border: 1px solid yellow;
+            width: calc(100% - 100px);
             h3{
                 margin: 0;
             }
@@ -43,6 +59,11 @@
                 margin: 0;
                 margin-top: 15px;
             }
+        }
+
+        &__action{
+            width: 30px;
+            border: 1px solid red;
         }
     }
 }

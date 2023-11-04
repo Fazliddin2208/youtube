@@ -4,7 +4,10 @@ import React, { useEffect, useState } from "react";
 import content from "./../content.module.scss";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircle,
+  faEllipsisVertical,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import axios from "axios";
 
@@ -58,6 +61,21 @@ export default function VideoComponent({ video }) {
     } else {
       setViewCount(count);
     }
+  };
+
+  useEffect(() => {
+    getTweets();
+  }, []);
+
+  const getTweets = async () => {
+    await axios
+      .get(`https://api.twitter.com/1.1/statuses/home_timeline.json`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

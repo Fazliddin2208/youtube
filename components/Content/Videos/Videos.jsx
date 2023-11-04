@@ -5,7 +5,7 @@ import content from "./../content.module.scss";
 
 async function getYouTubeDatas() {
   const result = await axios.get(
-    `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=50&chart=mostPopular&key=AIzaSyB9WvaJK1VfXypXIT9KBUE0yDBQZ3SRTA8`
+    `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=48&chart=mostPopular&key=AIzaSyB9WvaJK1VfXypXIT9KBUE0yDBQZ3SRTA8`
   );
 
   return result.data.items;

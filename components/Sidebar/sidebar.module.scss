@@ -2,6 +2,9 @@
 
 .sidebar {
   padding: 10px 5px;
+  position: fixed;
+  width: 14%;
+  height: calc(100vh - 10px);
 
   &__bars {
     font-size: 20px;
@@ -25,6 +28,11 @@
 
   &__body{
     margin-top: 30px;
+    height: 91%;
+    
+    &:hover{
+      overflow: auto;
+    }
 
     ul{
       list-style: none;
@@ -32,6 +40,7 @@
       box-sizing: content-box;
       border-bottom: 1px solid rgb(61, 60, 60);
       padding-bottom: 15px;
+      margin: 0;
       li{
         margin: 0;
         border-radius: 10px;

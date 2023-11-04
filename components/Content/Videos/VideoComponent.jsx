@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import content from "./../content.module.scss";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+import { faCircle, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import axios from "axios";
 
@@ -12,6 +12,7 @@ export default function VideoComponent({ video }) {
   useEffect(() => {
     checkPublishetTime();
     getChannelInfo();
+    checkViews(video?.statistics?.viewCount);
   }, []);
 
   const [channelInfo, setChannelInfo] = useState({});
@@ -44,6 +45,21 @@ export default function VideoComponent({ video }) {
     setPublishDate(pdate[0]);
   };
 
+  const [viewCount, setViewCount] = useState(0);
+
+  const checkViews = (count) => {
+    // video?.statistics?.viewCount
+    if (count >= 10000000) {
+      setViewCount(`${(count / 10000000).toFixed(1)} B`);
+    } else if (count >= 1000000) {
+      setViewCount(`${(count / 1000000).toFixed(1)} M`);
+    } else if (count >= 1000) {
+      setViewCount(`${(count / 1000).toFixed(1)} K`);
+    } else {
+      setViewCount(count);
+    }
+  };
+
   return (
     <div className={content.videos__cart}>
       <Link href={`/${video?.id}`} className={content.videos__cart__header}>
@@ -72,8 +88,12 @@ export default function VideoComponent({ video }) {
           <Link href={`/${video?.id}`}>
             <h3>{video?.snippet?.localized?.title}</h3>
           </Link>
-          <Link href={"/"}><p>{channelInfo?.channelTitle}</p></Link>
-          <p>{publishDate}</p>
+          <Link href={"/"}>
+            <p>{channelInfo?.channelTitle}</p>
+          </Link>
+          <p>
+            {viewCount} views <FontAwesomeIcon icon={faCircle} /> {publishDate}
+          </p>
         </div>
         <div className={content.videos__cart__action}>
           <FontAwesomeIcon icon={faEllipsisVertical} />

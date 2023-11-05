@@ -63,20 +63,6 @@ export default function VideoComponent({ video }) {
     }
   };
 
-  useEffect(() => {
-    getTweets();
-  }, []);
-
-  const getTweets = async () => {
-    await axios
-      .get(`https://api.twitter.com/1.1/statuses/home_timeline.json`)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <div className={content.videos__cart}>

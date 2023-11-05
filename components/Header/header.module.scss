@@ -2,5 +2,22 @@
     border: 1px solid red;
     height: 50px;
     position: fixed;
-    width: calc(100% - 19%);
+    width: calc(100% - 30px);
+    left: 15px;
+    display: flex;
+    background-color: #171717;
+    justify-content: space-between;
+
+    &__data{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    &__personal{
+        display: flex;
+        align-items: center;
+        border: 1px solid;
+        width: 100px;
+    }
 }

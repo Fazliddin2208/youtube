@@ -5,19 +5,15 @@ import {
   faBars,
   faMagnifyingGlass,
   faMicrophone,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { faBell } from "@fortawesome/free-regular-svg-icons";
+import { faBell, faUser } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
 
 export default function Header() {
   return (
     <div className={head.header}>
-      <div className={head.header__data}>
-        <FontAwesomeIcon
-          icon={faBars}
-          className="main__bars"
-        />
+      <div className={head.header__logo}>
+        <FontAwesomeIcon icon={faBars} className="main__bars" />
 
         <Link href={"/"}>
           <svg
@@ -62,37 +58,30 @@ export default function Header() {
           </svg>
         </Link>
       </div>
-      <div className={head.header__data}>
-        <div className={head.header__search}>
+      <div className={head.header__search}>
+        <div className={head.header__search__box}>
           <input type="search" placeholder="Search..." />
           <button>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </div>
-        <FontAwesomeIcon icon={faMicrophone} />
+        <FontAwesomeIcon className={head.header__search__mic} icon={faMicrophone} />
       </div>
-      <div className={head.header__data}>
-        <div className={head.header__personal}>
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M18 15h-4v-4h-2v4H8v2h4v4h2v-4h4v-2z"
-              fill="#ffffff"
-              class="fill-000000"
-            ></path>
-            <path
-              d="M21 26H4a2.002 2.002 0 0 1-2-2V8a2.002 2.002 0 0 1 2-2h17a2.002 2.002 0 0 1 2 2v4.057l5.419-3.87A1 1 0 0 1 30 9v14a1 1 0 0 1-1.581.814L23 19.944V24a2.002 2.002 0 0 1-2 2ZM4 8v16.001L21 24v-6a1 1 0 0 1 1.581-.814L28 21.056V10.944l-5.419 3.87A1 1 0 0 1 21 14V8Z"
-              fill="#ffffff"
-              class="fill-000000"
-            ></path>
-            <path
-              data-name="<Transparent Rectangle>"
-              d="M0 0h32v32H0z"
-              fill="none"
-            ></path>
-          </svg>
-          <FontAwesomeIcon icon={faBell} />
-          <FontAwesomeIcon icon={faUser} />
-        </div>
+      <div className={head.header__personals}>
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 15h-4v-4h-2v4H8v2h4v4h2v-4h4v-2z" fill="#ffffff"></path>
+          <path
+            d="M21 26H4a2.002 2.002 0 0 1-2-2V8a2.002 2.002 0 0 1 2-2h17a2.002 2.002 0 0 1 2 2v4.057l5.419-3.87A1 1 0 0 1 30 9v14a1 1 0 0 1-1.581.814L23 19.944V24a2.002 2.002 0 0 1-2 2ZM4 8v16.001L21 24v-6a1 1 0 0 1 1.581-.814L28 21.056V10.944l-5.419 3.87A1 1 0 0 1 21 14V8Z"
+            fill="#ffffff"
+          ></path>
+          <path
+            data-name="<Transparent Rectangle>"
+            d="M0 0h32v32H0z"
+            fill="none"
+          ></path>
+        </svg>
+        <FontAwesomeIcon icon={faBell} />
+        <FontAwesomeIcon icon={faUser} />
       </div>
       {/* Header
       <Link href='/'>Bosh sahifa</Link> */}

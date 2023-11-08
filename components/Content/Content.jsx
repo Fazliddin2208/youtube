@@ -8,7 +8,7 @@ import content from "./content.module.scss";
 export default function Content() {
   return (
     <div className={content.content}>
-      <Tags />
+      {/* <Tags /> */}
       <Suspense fallback={<Loading />}>
         <Videos />
       </Suspense>

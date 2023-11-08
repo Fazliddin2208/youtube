@@ -16,7 +16,6 @@ export default async function Videos() {
 
   return (
     <div>
-      <hr />
       <ul className={content.videos}>
         {videos?.map((video) => (
           <VideoComponent key={video?.id} video={video} />

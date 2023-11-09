@@ -66,7 +66,7 @@ export default function VideoComponent({ video }) {
 
   return (
     <div className={content.videos__cart}>
-      <Link href={`/${video?.id}`} className={content.videos__cart__header}>
+      <Link href={`/video/${video?.id}`} className={content.videos__cart__header}>
         <Image
           src={video?.snippet?.thumbnails?.medium?.url}
           alt="video"

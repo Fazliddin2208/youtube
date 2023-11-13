@@ -2,9 +2,14 @@ import { Inter, Roboto } from "next/font/google";
 import "./../styles/style.scss";
 import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import Providers from "./providers";
+import MainLayout from "@/components/MainLayout";
+// import { initializeStore } from "@/redux/configureStore";
+// import { Provider } from "react-redux";
+// import { PersistGate } from "redux-persist/integration/react";
 
 const inter = Inter({ subsets: ["latin"] });
-const roboto = Roboto({ subsets: ["latin"], weight:'500' });
+const roboto = Roboto({ subsets: ["latin"], weight: "500" });
 
 export const metadata = {
   title: "Create Next App",
@@ -12,18 +17,24 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // const { store, persistor } = initializeStore;
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <div className="content">
-          <div className="left">
-            <Sidebar />
-          </div>
-          <div className="right">
-            <Header />
-            {children}
-          </div>
-        </div>
+          {/* <Provider store={store}>
+            <PersistGate persistor={persistor}> */}
+              <div className="content">
+                <div className="left">
+                  <Sidebar />
+                </div>
+                <div className="right">
+                  <Header />
+                  <MainLayout children={children} />
+                  
+                </div>
+              </div>
+            {/* </PersistGate>
+          </Provider> */}
       </body>
     </html>
   );

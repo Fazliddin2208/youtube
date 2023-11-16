@@ -1,6 +1,4 @@
-const initialStore = false;
-
-const loaderReducer = (state = initialStore, action) => {
+const loaderReducer = (state = false, action) => {
     switch (action.type) {
         case 'INIT_LOADER':
             return true;

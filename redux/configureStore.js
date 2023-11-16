@@ -1,10 +1,10 @@
-import { createStore } from "redux";
+import {legacy_createStore as createStore} from 'redux'
 import { persistReducer, persistStore } from "redux-persist";
 import storage from 'redux-persist/lib/storage';
-import allReducers from "./reducers/index";
+import allReducers from "./reducers";
 
 const persistConfig = {
-    key: 'clonedata', // The key under which your Redux state will be saved
+    key: 'clonedata',
     storage,
 };
 

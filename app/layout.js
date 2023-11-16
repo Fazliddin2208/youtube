@@ -1,11 +1,11 @@
 import { Inter, Roboto } from "next/font/google";
 import "./../styles/style.scss";
-import Header from "@/components/Header/Header";
-import Sidebar from "@/components/Sidebar/Sidebar";
-import { initializeStore } from "@/redux/configureStore";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+// import Header from "@/components/Header/Header";
+// import Sidebar from "@/components/Sidebar/Sidebar";
 import MainLayout from "@/components/MainLayout";
+import Providers from "@/redux/providers";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import Header from "@/components/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ subsets: ["latin"], weight: "500" });
@@ -16,25 +16,21 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const { store, persistor } = initializeStore;
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <html lang="en">
-          <body className={roboto.className}>
-            <div className="content">
-              <div className="left">
-                <Sidebar />
-              </div>
-              <div className="right">
-                <Header />
-                {/* <MainLayout children={children} /> */}
-                {children}
-              </div>
-            </div>
-          </body>
-        </html>
-      </PersistGate>
-    </Provider>
+    <html lang="en">
+      <body className={roboto.className}>
+        <div className="content">
+          <div className="left">
+            <Sidebar />
+          </div>
+          <div className="right">
+            <Header />
+            <Providers>{children}</Providers>
+            {children}
+          </div>
+        </div>
+        {/* <MainLayout children={children} /> */}
+      </body>
+    </html>
   );
 }

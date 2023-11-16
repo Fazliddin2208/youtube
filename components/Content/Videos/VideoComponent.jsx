@@ -10,8 +10,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "@/components/Loaders/Loader";
+import { closeLoader, initLoader } from "@/redux/actions/loaderActions";
 
 export default function VideoComponent({ video }) {
+
+  const dispatch = useDispatch()
+  const loader = useSelector((state) => state.loader);
+
+  console.log(loader, 'comp');
+
   useEffect(() => {
     checkPublishetTime();
     getChannelInfo();
@@ -63,13 +72,28 @@ export default function VideoComponent({ video }) {
     }
   };
 
+  const load = () => {
+    dispatch(initLoader());
+  };
+
+  const unLoad = () => {
+    dispatch(closeLoader());
+  };
+
+  useEffect(()=>{
+    unLoad()
+  },[])
+
 
   return (
+    <>
+    {loader && <Loader />}
     <div className={content.videos__cart}>
       <Link href={`/video/${video?.id}`} className={content.videos__cart__header}>
         <Image
           src={video?.snippet?.thumbnails?.medium?.url}
           alt="video"
+          onClick={load}
           width={video?.snippet?.thumbnails?.medium?.width}
           height={video?.snippet?.thumbnails?.medium?.height}
           quality={100}
@@ -89,7 +113,7 @@ export default function VideoComponent({ video }) {
           )}
         </div>
         <div className={content.videos__cart__data}>
-          <Link href={`/${video?.id}`}>
+          <Link href={`/video/${video?.id}`} onClick={load}>
             <h3>{video?.snippet?.localized?.title}</h3>
           </Link>
           <Link href={"/"}>
@@ -104,5 +128,6 @@ export default function VideoComponent({ video }) {
         </div>
       </div>
     </div>
+    </>
   );
 }

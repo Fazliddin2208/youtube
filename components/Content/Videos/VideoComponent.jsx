@@ -16,6 +16,8 @@ import { closeLoader, initLoader } from "@/redux/actions/loaderActions";
 
 export default function VideoComponent({ video }) {
 
+  // console.log(video);
+
   const dispatch = useDispatch()
   const loader = useSelector((state) => state.loader);
 

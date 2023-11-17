@@ -7,13 +7,18 @@ async function getYouTubeDatas() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
-  const result = await axios.get(
-    `${apiUrl}/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=50&chart=mostPopular&key=${apiKey}`
-  );
+  const result = await axios
+    .get(
+      `${apiUrl}/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=50&chart=mostPopular&key=${apiKey}`
+    )
+    .then((res) => {
+      return res.data.items;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-  console.log(apiKey, apiUrl);
-
-  return result.data.items;
+  return result;
 }
 
 export default async function Videos() {

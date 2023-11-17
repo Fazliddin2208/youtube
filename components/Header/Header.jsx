@@ -8,8 +8,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faUser } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
+import SearchBox from "./SearchBox";
 
-export default function Header() {
+export default function Header(context) {
+  console.log(context, 'head');
   return (
     <div className={head.header}>
       <div className={head.header__logo}>
@@ -58,15 +60,7 @@ export default function Header() {
           </svg>
         </Link>
       </div>
-      <div className={head.header__search}>
-        <div className={head.header__search__box}>
-          <input type="search" placeholder="Search..." />
-          <button>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-        </div>
-        <FontAwesomeIcon className={head.header__search__mic} icon={faMicrophone} />
-      </div>
+      <SearchBox context={context} />
       <div className={head.header__personals}>
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 15h-4v-4h-2v4H8v2h4v4h2v-4h4v-2z" fill="#ffffff"></path>
@@ -83,8 +77,6 @@ export default function Header() {
         <FontAwesomeIcon icon={faBell} />
         <FontAwesomeIcon icon={faUser} />
       </div>
-      {/* Header
-      <Link href='/'>Bosh sahifa</Link> */}
     </div>
   );
 }

@@ -6,13 +6,32 @@ import {
   faMagnifyingGlass,
   faMicrophone,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../Loaders/Loader";
+import { closeLoader, initLoader } from "@/redux/actions/loaderActions";
 
 export default function SearchBox({ context }) {
-    console.log(context);
-    const path = usePathname()
-    console.log(path);
+  const dispatch = useDispatch();
+  const loader = useSelector((state) => state.loader);
+  console.log(loader);
+
+  const load = () => {
+    dispatch(initLoader());
+  };
+
+  const unLoad = () => {
+    dispatch(closeLoader());
+  };
+
+  useEffect(() => {
+    unLoad();
+  }, []);
+
+  console.log(context);
+  const path = usePathname();
+  console.log(path);
   const router = useRouter();
   const [query, setQuery] = useState("");
   const handlePickQuery = (e) => {
@@ -20,32 +39,36 @@ export default function SearchBox({ context }) {
   };
   const handleClickSearch = () => {
     console.log(query);
-    query && router.push(`/search?q=${query}`, { scroll: false });
+    query && (router.push(`/search?q=${query}`, { scroll: false }), load());
   };
 
   const handleKeyDown = (event, query) => {
     if (event.key == "Enter") {
       router.push(`/search?q=${query}`, { scroll: false });
-      console.log('ishla');
+      console.log("ishla");
+      load();
     }
   };
   return (
-    <div className={head.header__search}>
-      <div className={head.header__search__box}>
-        <input
-          type="search"
-          placeholder="Search..."
-          onKeyUp={(e) => handleKeyDown(e, query)}
-          onChange={handlePickQuery}
+    <>
+      {loader && <Loader />}
+      <div className={head.header__search}>
+        <div className={head.header__search__box}>
+          <input
+            type="search"
+            placeholder="Search..."
+            onKeyUp={(e) => handleKeyDown(e, query)}
+            onChange={handlePickQuery}
+          />
+          <button onClick={handleClickSearch}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+        </div>
+        <FontAwesomeIcon
+          className={head.header__search__mic}
+          icon={faMicrophone}
         />
-        <button onClick={handleClickSearch}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
       </div>
-      <FontAwesomeIcon
-        className={head.header__search__mic}
-        icon={faMicrophone}
-      />
-    </div>
+    </>
   );
 }

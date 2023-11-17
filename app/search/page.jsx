@@ -8,7 +8,7 @@ async function getSearchedVideos(query) {
   const result = await axios
     .get(`${apiUrl}/search?q=${query}&maxResults=50&key=${apiKey}`)
     .then((res) => {
-      return res.data;
+      return res?.data?.items;
     })
     .catch((err) => {
       console.log(err);
@@ -22,7 +22,7 @@ export default async function Search(context) {
   return (
     <div>
       Search page
-      <SearchResults results={results.items} />
+      <SearchResults results={results} />
     </div>
   );
 }

@@ -9,11 +9,9 @@ import Loader from "@/components/Loaders/Loader";
 export default function VideoPage({ params }) {
   const loader = useSelector((state) => state.loader);
 
-  useEffect(()=>{
-    unLoad()
-  },[])
-
-  console.log(loader);
+  useEffect(() => {
+    unLoad();
+  }, []);
 
   const dispatch = useDispatch();
 
@@ -38,8 +36,12 @@ export default function VideoPage({ params }) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
-        <button style={{position:'relative', zIndex:'6'}} onClick={load}>click for loader</button>
-        <button style={{position:'relative', zIndex:'6'}} onClick={unLoad}>click for unload</button>
+        <button style={{ position: "relative", zIndex: "6" }} onClick={load}>
+          click for loader
+        </button>
+        <button style={{ position: "relative", zIndex: "6" }} onClick={unLoad}>
+          click for unload
+        </button>
       </div>
     </>
   );

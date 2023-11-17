@@ -4,9 +4,14 @@ import VideoComponent from "./VideoComponent";
 import content from "./../content.module.scss";
 
 async function getYouTubeDatas() {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
   const result = await axios.get(
-    `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=50&chart=mostPopular&key=AIzaSyB9WvaJK1VfXypXIT9KBUE0yDBQZ3SRTA8`
+    `${apiUrl}/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=50&chart=mostPopular&key=${apiKey}`
   );
+
+  console.log(apiKey, apiUrl);
 
   return result.data.items;
 }

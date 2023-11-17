@@ -56,12 +56,3 @@ body {
 .left {
   height: calc(100vh - 10px);
 }
-
-.loader{
-  width: 100vw;
-  height: 100vh;
-  background-color: #1717178d;
-  position: fixed;
-  // z-index: 5;
-  color: red;
-}

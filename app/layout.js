@@ -1,11 +1,6 @@
 import { Inter, Roboto } from "next/font/google";
 import "./../styles/style.scss";
-// import Header from "@/components/Header/Header";
-// import Sidebar from "@/components/Sidebar/Sidebar";
-import MainLayout from "@/components/MainLayout";
-import Providers from "@/redux/providers";
-import Sidebar from "@/components/Sidebar/Sidebar";
-import Header from "@/components/Header/Header";
+import Providers from "@/app/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ subsets: ["latin"], weight: "500" });

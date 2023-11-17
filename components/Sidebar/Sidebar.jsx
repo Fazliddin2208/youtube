@@ -11,8 +11,6 @@ import { usePathname } from "next/navigation";
 export default function Sidebar() {
   const pathname = usePathname();
 
-  console.log(pathname, "side");
-
   return (
     pathname == "/" && (
       <div className={side.sidebar}>

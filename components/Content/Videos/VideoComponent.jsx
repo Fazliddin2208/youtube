@@ -19,8 +19,6 @@ export default function VideoComponent({ video }) {
   const dispatch = useDispatch()
   const loader = useSelector((state) => state.loader);
 
-  console.log(loader, 'comp');
-
   useEffect(() => {
     checkPublishetTime();
     getChannelInfo();

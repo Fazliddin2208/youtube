@@ -21,7 +21,6 @@ export default async function Search(context) {
   const results = await getSearchedVideos(context?.searchParams?.q);
   return (
     <div>
-      Search page
       <SearchResults results={results} />
     </div>
   );

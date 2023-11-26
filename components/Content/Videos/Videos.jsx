@@ -9,7 +9,7 @@ async function getYouTubeDatas() {
 
   const result = await axios
     .get(
-      `${apiUrl}/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=50&chart=mostPopular&key=${apiKey}`
+      `${apiUrl}/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=48&chart=mostPopular&key=${apiKey}`
     )
     .then((res) => {
       return res.data.items;

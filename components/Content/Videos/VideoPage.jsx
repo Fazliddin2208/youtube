@@ -23,19 +23,27 @@ export default function VideoPage({ params }) {
     dispatch(closeLoader());
   };
 
+  console.log(params);
+
   return (
     <>
       {loader && <Loader />}
-      <div className={content.video_page}>
-        <iframe
-          width="800"
-          height="499"
-          src={`https://www.youtube.com/embed/${params?.videoId}?autoplay=1`}
-          autoPlay
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+      <div className={content.video__page}>
+        <div className={content.video__page__left}>
+          <iframe
+            width="800"
+            height="499"
+            src={`https://www.youtube.com/embed/${params?.videoId}?autoplay=1`}
+            autoPlay
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+
+        <div className={content.video__page__right}>
+
+        </div>
       </div>
     </>
   );

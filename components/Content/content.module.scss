@@ -94,3 +94,13 @@
     }
   }
 }
+
+.video{
+  &__page{
+    margin-top: 80px;
+
+    iframe{
+      border-radius: 10px;
+    }
+  }
+}

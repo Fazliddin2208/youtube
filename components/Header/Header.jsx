@@ -11,7 +11,6 @@ import Link from "next/link";
 import SearchBox from "./SearchBox";
 
 export default function Header(context) {
-  console.log(context, 'head');
   return (
     <div className={head.header}>
       <div className={head.header__logo}>

@@ -60,7 +60,6 @@ export default function VideoComponent({ video }) {
   const [viewCount, setViewCount] = useState(0);
 
   const checkViews = (count) => {
-    // video?.statistics?.viewCount
     if (count >= 10000000) {
       setViewCount(`${(count / 10000000).toFixed(1)} B`);
     } else if (count >= 1000000) {

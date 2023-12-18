@@ -18,9 +18,8 @@ async function getSearchedVideos(context) {
   return result;
 }
 
-export default async function VideoSearch({ params }) {
+export default async function VideoSearch() {
   const results = await getSearchedVideos();
-  console.log(params);
   return (
     <div>
       Vide Search

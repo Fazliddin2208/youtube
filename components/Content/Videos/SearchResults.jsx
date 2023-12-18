@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchResults({ results }) {
-  console.log(results);
+  console.log(results, 'shu');
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
   const loader = useSelector((state) => state.loader);
@@ -20,10 +20,26 @@ export default function SearchResults({ results }) {
   useEffect(() => {
     unLoad();
     console.log(results);
-    setTimeout(()=>{
-        unLoad()
-    },3000)
+    setTimeout(() => {
+      unLoad();
+    }, 3000);
   }, [results]);
+
+  const getVideoDetails = async() => {
+    results?.map(item=>{
+      axios.get(`${apiUrl}/videos?id=${item?.id?.videoId}&key=${apiKey}`)
+      .then(res=>{
+        console.log(res, 'res');
+      })
+      .catch(err=>{
+        console.log(err, 'err');
+      })
+    })
+  }
+
+  useEffect(()=>{
+    getVideoDetails()
+  },[])
 
   //   useEffect(() => {
   //     getResults()
@@ -45,14 +61,15 @@ export default function SearchResults({ results }) {
     <div>
       SearchResults
       {results?.map((result, index) => (
-        <Image
-          key={index}
-          src={`https://i.ytimg.com/vi/${result?.id?.videoId}/mqdefault.jpg`}
-          alt="img"
-          width={300}
-          height={200}
-          quality={100}
-        />
+        <div key={index}>
+          <Image
+            src={`https://i.ytimg.com/vi/${result?.id?.videoId}/mqdefault.jpg`}
+            alt="img"
+            width={300}
+            height={200}
+            quality={100}
+          />
+        </div>
       ))}
     </div>
   );

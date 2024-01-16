@@ -98,9 +98,19 @@
 .video{
   &__page{
     margin-top: 80px;
+    display: grid;
+    grid-template-columns: 60% 38%;
+    gap: 2%;
+
+    &__left{
+    }
+
+    &__right{
+    }
 
     iframe{
       border-radius: 10px;
+      width: 100%;
     }
   }
 }

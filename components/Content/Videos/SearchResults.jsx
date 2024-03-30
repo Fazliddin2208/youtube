@@ -3,6 +3,7 @@
 import { closeLoader } from "@/redux/actions/loaderActions";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -61,7 +62,7 @@ export default function SearchResults({ results }) {
     <div>
       SearchResults
       {results?.map((result, index) => (
-        <div key={index}>
+        <Link href={`/video/${result?.id?.videoId}`} key={index}>
           <Image
             src={`https://i.ytimg.com/vi/${result?.id?.videoId}/mqdefault.jpg`}
             alt="img"
@@ -69,7 +70,7 @@ export default function SearchResults({ results }) {
             height={200}
             quality={100}
           />
-        </div>
+        </Link>
       ))}
     </div>
   );

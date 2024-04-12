@@ -65,7 +65,7 @@ export default function SearchResults({ results }) {
         marginTop: "60px",
       }}
     >
-      <h3>SearchResults:</h3>
+      <h3>SearchResults</h3>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(4, 1fr)',

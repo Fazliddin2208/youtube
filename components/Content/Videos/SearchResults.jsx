@@ -43,21 +43,21 @@ export default function SearchResults({ results }) {
     getVideoDetails();
   }, []);
 
-  //   useEffect(() => {
-  //     getResults()
-  //   },[]);
+    useEffect(() => {
+      getResults()
+    },[]);
 
-  //   const getResults = async () => {
-  //     await axios
-  //       .get(`${apiUrl}/search?q=code&key=${apiKey}`)
-  //       .then((res) => {
-  //         console.log(res.data, "shu");
-  //         return res.items;
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+    const getResults = async () => {
+      await axios
+        .get(`${apiUrl}/search?q=code&key=${apiKey}`)
+        .then((res) => {
+          console.log(res.data, "shu");
+          // return res.items;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
   // "https://i.ytimg.com/vi/uHb7au6Gmls/mqdefault.jpg"
   return (
     <div

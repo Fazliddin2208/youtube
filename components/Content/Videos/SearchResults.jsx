@@ -20,7 +20,6 @@ export default function SearchResults({ results }) {
 
   useEffect(() => {
     unLoad();
-    console.log(results);
     setTimeout(() => {
       unLoad();
     }, 3000);
@@ -31,7 +30,7 @@ export default function SearchResults({ results }) {
       axios
         .get(`${apiUrl}/videos?id=${item?.id?.videoId}&key=${apiKey}`)
         .then((res) => {
-          console.log(res, "res");
+          // console.log(res, "res");
         })
         .catch((err) => {
           console.log(err, "err");
@@ -51,7 +50,7 @@ export default function SearchResults({ results }) {
       await axios
         .get(`${apiUrl}/search?q=code&key=${apiKey}`)
         .then((res) => {
-          console.log(res.data, "shu");
+          // console.log(res.data, "shu");
           // return res.items;
         })
         .catch((err) => {

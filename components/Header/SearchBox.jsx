@@ -51,7 +51,7 @@ export default function SearchBox({ context }) {
         <div className={head.header__search__box}>
           <input
             type="search"
-            placeholder="Search..."
+            placeholder="Search"
             onKeyUp={(e) => handleKeyDown(e, query)}
             onChange={handlePickQuery}
           />

@@ -51,7 +51,7 @@ export default function SearchBox({ context }) {
         <div className={head.header__search__box}>
           <input
             type="search"
-            placeholder="Search your video"
+            placeholder="Search your video..."
             onKeyUp={(e) => handleKeyDown(e, query)}
             onChange={handlePickQuery}
           />
